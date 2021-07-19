@@ -1,0 +1,8 @@
+<section class="edit-form">
+  <textarea id="edit-todo" [value]="todo['todo']" (change)="handelChange($event)"></textarea>
+
+  <div>
+    <button class="btn done" (click)="editTodo()">Done</button>
+    <button class="btn cancel" (click)="handelCancel()">Cancel</button>
+  </div>
+</section>
