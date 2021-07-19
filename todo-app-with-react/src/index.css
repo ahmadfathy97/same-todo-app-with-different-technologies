@@ -23,7 +23,7 @@ textarea{
   font-size: 26px;
 /*   box-shadow: 0 -2px 8px  var(--app-color) inset; */
 }
-body{
+.App{
   padding: 2rem .25rem;
   display: grid;
   place-items: center;

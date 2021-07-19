@@ -1,16 +1,19 @@
 <template>
-  <div id="app" class="todos-container">
-    <AddTodo @addT="addTodo"/>
-    <div class="todos" v-if="oldTodos.length">
-      <Todo v-for="(text, index) in oldTodos"
-      :todo="{text: text, index: index}"
-      :key="index"
-      @openEditDialogue="openEditTodo"
-      @deleteT="deleteTodo"
-      />
+  <div id="app">
+    <h1 class="title">VUE TODO APP</h1>
+    <div class="todos-container">
+      <AddTodo @addT="addTodo"/>
+      <div class="todos" v-if="oldTodos.length">
+        <Todo v-for="(text, index) in oldTodos"
+        :todo="{text: text, index: index}"
+        :key="index"
+        @openEditDialogue="openEditTodo"
+        @deleteT="deleteTodo"
+        />
+      </div>
+      <div class="" v-else>there are no todos yet</div>
+      <EditTodo v-if="openEdit" :todo="currentTodo" @cancel="openEdit = false" @edit="editTodo"/>
     </div>
-    <div class="" v-else>there are no todos yet</div>
-    <EditTodo v-if="openEdit" :todo="currentTodo" @cancel="openEdit = false" @edit="editTodo"/>
   </div>
 </template>
 
@@ -35,12 +38,12 @@ export default {
     }
   },
   mounted(){
-    this.oldTodos = JSON.parse(localStorage.getItem('js-todos')) || [];
+    this.oldTodos = JSON.parse(localStorage.getItem('vue-todos')) || [];
   },
   methods:{
     addTodo(x){
       this.oldTodos.push(x);
-      localStorage.setItem('js-todos', JSON.stringify(this.oldTodos));
+      localStorage.setItem('vue-todos', JSON.stringify(this.oldTodos));
     },
     openEditTodo(todo){
       this.currentTodo = todo;
@@ -48,11 +51,11 @@ export default {
     },
     editTodo(todo){
       this.oldTodos[todo.index] = todo.text;
-      localStorage.setItem('js-todos', JSON.stringify(this.oldTodos));
+      localStorage.setItem('vue-todos', JSON.stringify(this.oldTodos));
     },
     deleteTodo(index){
       this.oldTodos.splice(index,1);
-      localStorage.setItem('js-todos', JSON.stringify(this.oldTodos));
+      localStorage.setItem('vue-todos', JSON.stringify(this.oldTodos));
     }
   }
 }
@@ -62,7 +65,7 @@ export default {
 *{padding: 0;margin: 0;box-sizing: border-box;font-family: cursive}
 :root{
   --app-color: #128812;
-  --secondary-color: #f8f8f8;
+  --secondary-color: #ddd;
   --danger: #ff5366;
 }
 ::selection{
@@ -84,13 +87,13 @@ textarea{
   font-size: 26px;
 /*   box-shadow: 0 -2px 8px  var(--app-color) inset; */
 }
-body{
+#app{
   padding: 2rem .25rem;
   display: grid;
   place-items: center;
 }
 .title{
-  display: inline-block;
+  text-align: center;
   padding: .5rem .5rem;
   margin-left: 1rem auto 2rem;
   color: #222;
@@ -160,16 +163,17 @@ body{
   width: 100%;
   min-height: 100vh;
   padding: 2rem;
+  display: flex;
   align-items:center;
   justify-content:center;
   flex-direction: column;
   background: rgba(255,255,255,.95);
   z-index: 99999;
-  display: flex;
 }
 
 .edit-form .cancel{
   background: var(--danger);
+  color: #000
 }
 
 </style>

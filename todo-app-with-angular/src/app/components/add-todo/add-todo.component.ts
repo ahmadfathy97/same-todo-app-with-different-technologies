@@ -17,7 +17,7 @@ export class AddTodoComponent implements OnInit {
   handelKeyup(e){
     if(e.keyCode === 13 && this.todo.trim().length){
       this.addTodo.emit(this.todo);
-      this.todo = '';
+      e.target.value = '';
     }
     this.todo = e.target.value;
   }

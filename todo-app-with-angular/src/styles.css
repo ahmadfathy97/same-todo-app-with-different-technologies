@@ -12,6 +12,12 @@
 :is(input, a, button, textarea):focus{
   outline: 2px dashed var(--secondary-color);
 }
+app-root{
+  padding: 2rem .25rem;
+  display: grid;
+  place-items: center;
+  width: 100%
+}
 textarea{
   resize: vertical;
   max-height: 50vmin;
@@ -23,13 +29,14 @@ textarea{
   font-size: 26px;
 /*   box-shadow: 0 -2px 8px  var(--app-color) inset; */
 }
-body{
+/* body{
   padding: 2rem .25rem;
   display: grid;
   place-items: center;
-}
+} */
 .title{
-  display: inline-block;
+  display: block;
+  text-align: center;
   padding: .5rem .5rem;
   margin-left: 1rem auto 2rem;
   color: #222;

@@ -42,7 +42,7 @@ function App() {
     <div className="App">
 
       <header className="App-header">
-        <h1 className="title">TODO APP</h1>
+        <h1 className="title">REACT TODO APP</h1>
       </header>
 
       <section className="todos-container">

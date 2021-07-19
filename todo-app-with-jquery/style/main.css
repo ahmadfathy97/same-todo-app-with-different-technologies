@@ -1,7 +1,7 @@
 *{padding: 0;margin: 0;box-sizing: border-box;font-family: cursive}
 :root{
-  --app-color: #f8d421;
-  --secondary-color: #444;
+  --app-color: #0868AC;
+  --secondary-color: #eee;
   --danger: #ff5366;
 }
 ::selection{
